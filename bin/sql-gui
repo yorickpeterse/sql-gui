@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/sql-gui'
+
+Thread.abort_on_exception = true
+
+Gtk.init
+
+# https://github.com/mvz/ruby-gir-ffi/wiki/Multi-threaded-applications
+GLib.idle_add(GLib::PRIORITY_DEFAULT_IDLE, proc { Thread.pass; true }, nil, nil)
+
+SqlGui::Connection.connect(:postgresql, 'localhost', 'postgres', nil, 'reddit_stats')
+
+main = SqlGui::MainWindow.new
+main.show
+
+Gtk.main
