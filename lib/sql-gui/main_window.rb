@@ -17,9 +17,13 @@ module SqlGui
     end
 
     def run_query
+      text = @editor.text.strip
+
+      return if text.empty?
+
       @statusbar.push(statusbar_context, 'Running query...')
 
-      future = SqlGui::Connection.schedule(1, @editor.text)
+      future = SqlGui::Connection.schedule(1, text)
       prio   = GLib::PRIORITY_DEFAULT_IDLE
 
       GLib.idle_add(prio, proc { wait_for_query(future) }, nil, nil)
