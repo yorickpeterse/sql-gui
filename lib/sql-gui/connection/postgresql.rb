@@ -6,6 +6,8 @@ module SqlGui
       register :postgresql
 
       def initialize(host, user, password, database)
+        require 'pg'
+
         @connection = PG.connect(
           :host     => host,
           :user     => user,

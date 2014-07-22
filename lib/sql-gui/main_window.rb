@@ -83,7 +83,7 @@ module SqlGui
         iter = list.append
 
         result.columns.each_with_index do |name, index|
-          list.set_value(iter, index, row[name])
+          list.set_value(iter, index, row[name].to_s)
         end
       end
 
