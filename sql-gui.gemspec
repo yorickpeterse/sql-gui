@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 1.9.3'
 
   s.add_dependency 'gir_ffi-gtk'
+  s.add_dependency 'celluloid'
 
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec', ['~> 3.0']
