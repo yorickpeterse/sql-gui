@@ -1,8 +1,6 @@
 module SqlGui
-  module Connection
-    ##
-    #
-    class SQLite3 < Base
+  class Connection
+    class SQLite3 < Connection
       register :sqlite3
 
       def initialize(database)

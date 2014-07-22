@@ -1,8 +1,6 @@
 module SqlGui
-  module Connection
-    ##
-    #
-    class PostgreSQL < Base
+  class Connection
+    class PostgreSQL < Connection
       register :postgresql
 
       def initialize(host, user, password, database)

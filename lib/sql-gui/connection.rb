@@ -1,32 +1,24 @@
 module SqlGui
-  module Connection
+  ##
+  # Base class for the various database adapters.
+  #
+  class Connection
+    include Celluloid
+
+    ##
+    # Hash containing the registered database adapters.
+    #
     def self.registered
       return @registered ||= {}
     end
 
     ##
-    # @return [Hash]
+    # Registers a new connection adapter.
     #
-    def self.active
-      return @active ||= {}
-    end
-
-    def self.new_connection_id
-      @connection_id ||= 0
-
-      return @connection_id += 1
-    end
-
-    ##
-    # @param [Symbol] type
-    # @param [Array] args
+    # @param [Symbol] name
     #
-    def self.connect(type, *args)
-      active[new_connection_id] = registered[type].new(*args)
-    end
-
-    def self.schedule(connection_id, query)
-      return active[connection_id].future.execute(query)
+    def self.register(name)
+      Connection.registered[name.to_sym] = self
     end
   end # Connection
 end # SqlGui
