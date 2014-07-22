@@ -59,10 +59,13 @@ module SqlGui
 
         column.pack_start(renderer, false)
         column.add_attribute(renderer, 'text', index)
-        column.resizable = true
 
-        renderer.editable = true
-        renderer.wrap_width = 80
+        column.resizable = true
+        column.expand    = true
+
+        renderer.editable      = true
+        renderer.ellipsize     = Pango::Lib::PANGO_ELLIPSIZE_END
+        renderer.ellipsize_set = true
 
         types   << GObject::TYPE_STRING
         columns << column

@@ -7,6 +7,7 @@ require 'pg'
 GirFFI.setup :GtkSource
 
 require_relative 'sql-gui/sql_gui'
+require_relative 'sql-gui/pango'
 require_relative 'sql-gui/main_window'
 require_relative 'sql-gui/sql_editor'
 require_relative 'sql-gui/query_result'
