@@ -6,7 +6,7 @@ Thread.abort_on_exception = true
 
 Gtk.init
 
-SqlGui::Connection.connect(:postgresql, 'localhost', 'postgres', nil, 'reddit_stats')
+SqlGui::ConnectionManager.connect(:postgresql, 'localhost', 'postgres', nil, 'reddit_stats')
 
 main = SqlGui::MainWindow.new
 main.show
